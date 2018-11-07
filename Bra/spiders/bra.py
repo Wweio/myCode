@@ -28,10 +28,10 @@ class BraSpider(scrapy.Spider):
     def start_requests(self):
         for page in range(1, 100):
             url = self.base_url % page
-            # print(url)
+            print(url)
             self.headers[':path'] = url
             yield Request(url, self.parse, headers=self.headers)
-            # time.sleep(2)
+            time.sleep(2)
 
     def parse(self, response):
         content = json.loads(response.text)
